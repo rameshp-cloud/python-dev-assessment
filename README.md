@@ -130,3 +130,47 @@ python debug\_errors.py
 
 python api\_client.py
 
+
+
+```
+
+
+
+For the API task, the `requests` library is required:
+
+
+
+```powershell
+
+python -m pip install requests
+
+```
+
+
+
+\## Reflections
+
+
+
+\### Challenge
+
+
+
+One challenge was understanding Git branches, commits, and merges while working through the assessment. I also learned how to resolve the Git merge commit message using the terminal editor.
+
+
+
+\### Interesting
+
+
+
+I found it interesting to see how Python can interact with an external API and turn JSON data into useful information in a simple program.
+
+
+
+\### What I Learned
+
+
+
+I improved my understanding of Python error handling, object-oriented programming, Git and GitHub workflows, code formatting and linting, and working with APIs.
+
