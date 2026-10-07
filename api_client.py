@@ -1,17 +1,24 @@
 import requests
 
 
-def fetch_users(num_users):
+def fetch_and_display_users(num_users):
     url = "https://jsonplaceholder.typicode.com/users"
 
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
 
         if response.status_code != 200:
-            print("Error: API request failed.")
-            return
+            print(
+                f"Error: API request failed "
+                f"with status code {response.status_code}."
+            )
+            return None
 
         users = response.json()
+
+        if not isinstance(users, list):
+            print("Error: Unexpected data format received from the API.")
+            return None
 
         for user in users[:num_users]:
             try:
@@ -19,12 +26,15 @@ def fetch_users(num_users):
                 print("Email:", user["email"])
                 print("City:", user["address"]["city"])
                 print()
-
             except (KeyError, TypeError):
                 print("Error: Unexpected data format received from the API.")
+                return None
 
-    except requests.exceptions.RequestException:
-        print("Error: Could not connect to the API.")
+        return None
+
+    except requests.exceptions.RequestException as error:
+        print(f"Error: Could not connect to the API: {error}")
+        return None
 
 
-fetch_users(3)
+fetch_and_display_users(3)
