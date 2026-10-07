@@ -13,12 +13,17 @@ def calculate_average(numbers):
 
 def get_list_element(my_list, index):
     try:
+        if not isinstance(my_list, list):
+            raise TypeError("my_list must be a list")
+
         return my_list[index]
+
     except IndexError:
         print("Error: Index is out of range.")
         return None
+
     except TypeError:
-        print("Error: Index must be an integer.")
+        print("Error: my_list must be a list and index must be an integer.")
         return None
 
 
